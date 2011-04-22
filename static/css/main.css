@@ -1,6 +1,8 @@
-body {background-color: #09384C; font-family: Verdana}
+body {background-color: #09384C;}
 
 .main_body {width: 60em; border: 2px solid #639BB4; margin-left: auto; margin-right: auto; background-color: white; }
+
+.content {padding: 0 1em 1em 1em;}
 
 .title_area {height: 10em; background-color: #42819C;}
 
@@ -13,3 +15,5 @@ body {background-color: #09384C; font-family: Verdana}
 .navigation_header .active {border: 1px solid #e7c576; background-color: #b8933d; color: #e7c576;}
 
 .navigation {list-style: none; padding: 0;}
+
+.footer {text-align: center;}

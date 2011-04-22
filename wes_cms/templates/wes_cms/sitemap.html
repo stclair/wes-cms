@@ -1,0 +1,19 @@
+{% extends "wes_cms/base.html" %}
+{% block content %}
+    <h2>Site Map</h2>
+    <ul>
+    {% for navigation in sitemap %}
+        {% if navigation == "begin-child" %}
+            <ul>
+        {% else %}
+            {% if navigation == "end-child" %}
+                </ul>
+            {% else %}
+                <li>
+                    <a href="{{ navigation.object.get_article.get_url }}">{{ navigation.object.text }}</a>
+                </li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endblock %}

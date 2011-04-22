@@ -12,10 +12,14 @@
         <div class="nav_headers">{% include "wes_cms/navigation_header.html" %}</div>
     </div>
 
-    <br/><br/>
+    <div class="content">
     {% include "wes_cms/navigation.html" %}
-    <br/><br/>
     {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer">
+        <a href="{% url sitemap %}">sitemap</a>
+    </div>
 </div>
 
 </body>

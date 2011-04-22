@@ -46,6 +46,16 @@ class Navigation(models.Model):
                 else:
                     return navigation.get_article()
 
+    def flatten(self, level=0):
+        flat_list = [{'object': self, 'level': level}]
+        if self.navigation_set.all():
+            flat_list.append('begin-child')
+        for child in self.navigation_set.all():
+            flat_list += child.flatten(level + 1)
+        if self.navigation_set.all():
+            flat_list.append('end-child')
+        return flat_list
+
     def __str__(self):
         return self.text
 
