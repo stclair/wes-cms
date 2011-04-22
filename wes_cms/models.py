@@ -21,37 +21,33 @@ class Image(BaseImageModel):
     def __str__(self):
         return "%s (%s)" % (self. description, self.get_sized_image(100))
 
-class NavigationHeaderManager(models.Manager):
-    def get_first(self):
-        return self.all()[0]
-
-class NavigationHeader(models.Model):
-    text = models.CharField(max_length=100)
-    order = models.IntegerField()
-
-    objects = NavigationHeaderManager()    
-
-    def __str__(self):
-        return self.text
-
-    def Meta(self):
-        ordering = ['order']
 
 class NavigationManager(models.Manager):
     def get_first(self):
-        header = NavigationHeader.objects.get_first()
-        return self.filter(header=header)[0]
+        top_level_navs = self.filter(parent=None)
+        if top_level_navs:
+            return top_level_navs[0]
 
 class Navigation(models.Model):
-    header = models.ForeignKey(NavigationHeader)
+    parent = models.ForeignKey('self', blank=True, null=True)
     text = models.CharField(max_length=100)
     order = models.IntegerField()
-    article = models.ForeignKey(Article)
+    article = models.ForeignKey(Article, blank=True, null=True)
 
     objects = NavigationManager()
+
+    def get_article(self):
+        if self.article:
+            return self.article
+        else:
+            for navigation in self.navigation_set.all():
+                if navigation.article:
+                    return navigation.article
+                else:
+                    return navigation.get_article()
 
     def __str__(self):
         return self.text
 
     def Meta(self):
-        ordering = ['header__order', 'order']
+        ordering = ['parent__order', 'order']

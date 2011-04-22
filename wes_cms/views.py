@@ -1,9 +1,10 @@
 from django.views.generic.list_detail import object_detail
 
-from wes_cms.models import Article, Navigation, NavigationHeader
+from wes_cms.models import Article, Navigation
 
-nav_headers = NavigationHeader.objects.all()
+nav_headers = Navigation.objects.filter(parent=None)
 
 def index(request):
-    nav = Navigation.objects.get_first()
-    return object_detail(request, Article.objects.all(), slug=nav.article.slug, extra_context={'nav_headers': nav_headers})
+    return object_detail(request, Article.objects.all(),
+                         slug=Navigation.objects.get_first().get_article().slug,
+                         extra_context={'nav_headers': nav_headers})
