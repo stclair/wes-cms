@@ -1,0 +1,8 @@
+{% extends "filetransfers/change_form.html" %}
+{% load image_tags %}
+
+{% block after_field_sets %}
+    {% if change %}
+    <img src="{% get_sized_image adminform.form.instance 320 %}" alt="image preview" title="image preview" />
+    {% endif %}
+{% endblock %}

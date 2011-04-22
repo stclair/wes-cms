@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Virginia, Iowa</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+</head>
+<body>
+
+<div class="main_body">
+
+    <div class="title_area">
+        <div class="nav_headers">{% include "wes_cms/navigation_header.html" %}</div>
+    </div>
+
+    <br/><br/>
+    {% include "wes_cms/navigation.html" %}
+    <br/><br/>
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<ul class="navigation">
+{% for nav in object.navigation_set.all.0.header.navigation_set.all %}
+    <li><a href="{{ nav.article.get_url }}">{{ nav }}</a></li>
+{% endfor %}
+</ul>
