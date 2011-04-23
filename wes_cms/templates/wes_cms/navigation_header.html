@@ -1,5 +1,5 @@
 <ul class="navigation_header">
 {% for header in nav_headers %}
-    <li><a href="{{ header.navigation_set.all.0.article.get_url }}" {% ifequal object.navigation_set.all.0.header header %}class="active"{% endifequal %}>{{ header }}</a></li>
+    <li><a href="{{ header.navigation_set.all.0.article.get_url }}" {% ifequal object.navigation_set.all.0.parent header %}class="active"{% endifequal %}>{{ header }}</a></li>
 {% endfor %}
 </ul>
