@@ -1,5 +1,15 @@
-<ul class="navigation">
-{% for nav in object.navigation_set.all.0.parent.navigation_set.all %}
-    <li><a href="{{ nav.article.get_url }}">{{ nav }}</a></li>
-{% endfor %}
-</ul>
+<div class="navigation">
+    <h3>{{ object.get_navigation_header }}</h3>
+    <ul>
+    {% for nav in object.get_navigation_header.navigation_set.all %}
+        <li><a href="{{ nav.article.get_url }}">{{ nav }}</a></li>
+        {% if nav.navigation_set %}
+            <ul class="sub-navigation">
+            {% for subnav in nav.navigation_set.all %}
+                <li><a href="{{ subnav.article.get_url }}">{{ subnav }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>

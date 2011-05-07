@@ -36,6 +36,11 @@ indexes:
   - name: __key__
     direction: desc
 
+- kind: wes_cms_themetemplate
+  properties:
+  - name: __key__
+    direction: desc
+
 - kind: westest_wes
   properties:
   - name: __key__

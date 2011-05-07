@@ -1,19 +1,26 @@
-body {background-color: #09384C;}
+body {margin: 0; background:#551e13 url('/static/images/shadow-bg.png') repeat-y center top;}
 
-.main_body {width: 60em; border: 2px solid #639BB4; margin-left: auto; margin-right: auto; background-color: white; }
+.main_body {width: 1023px; margin-left: auto; margin-right: auto; background-color: white; }
 
-.content {padding: 0 1em 1em 1em;}
+.article {margin-left: 15em; padding: 0 1em 1em 1em; border-left: 1px solid #789ca8;}
 
-.title_area {height: 10em; background-color: #42819C;}
+.title_area {height: 234px; background-image:url('/static/images/nv-bg.png')}
 
-.nav_headers {float: right; margin-top: 7.35em;}
+.nav_headers {float: right; margin-top: 198px;}
 
 .navigation_header {list-style: none; padding: 0;}
 .navigation_header li {float: left;}
-.navigation_header li a {padding: .5em; border: 1px solid #b8933d; text-decoration: none; background-color: #e7c576; color: #b8933d;}
-.navigation_header li a:hover {border: 1px solid #e7c576; background-color: #b8933d; color: #e7c576;}
-.navigation_header .active {border: 1px solid #e7c576; background-color: #b8933d; color: #e7c576;}
+.navigation_header li a {padding: .1em .5em .1em .5em; margin: 0 .2em 0 .2em; border-top: 1px solid #0d2b35; border-left: 1px solid #0d2b35; border-right: 1px solid #0d2b35; text-decoration: none; background-color: #789ca8; color: #0d2b35;}
+.navigation_header li a:hover {border-top: 1px solid #789ca8; border-left: 1px solid #789ca8; border-right: 1px solid #789ca8; background-color: #0d2b35; color: #789ca8;}
+.navigation_header .active {border-top: 1px solid #789ca8; border-left: 1px solid #789ca8; border-right: 1px solid #789ca8; background-color: #0d2b35; color: #789ca8;}
 
-.navigation {list-style: none; padding: 0;}
+.navigation {float: left; padding-left: 1em;}
+.navigation ul {list-style: none; padding: 0;}
+
+.sub-navigation li {padding-left: 1em;}
+
+.breadcrumbs {background-color: #0d2b35; color: #789ca8; padding-left: 1em;}
+.breadcrumbs a {color: #789ca8; font-size: .8em; text-decoration: none;}
+.breadcrumbs a:hover {text-decoration: underline;}
 
 .footer {text-align: center;}

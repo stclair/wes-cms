@@ -1,0 +1,3 @@
+{% for nav in object.get_breadcrumbs %}
+    » <a href="{{ nav.article.get_url }}">{{ nav }}</a>
+{% endfor %}

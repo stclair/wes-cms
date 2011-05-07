@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 
 from images.models import BaseImageModel
@@ -8,6 +10,20 @@ class Article(models.Model):
 
     def get_url(self):
         return "/%s/" % self.slug
+
+    def get_breadcrumbs(self):
+        nav = self.navigation_set.all()[0]
+        trail = [nav]
+        while nav.parent:
+            nav = nav.parent
+            trail.append(nav)
+        return reversed(trail)
+
+    def get_navigation_header(self):
+        nav = self.navigation_set.all()[0]
+        while nav.parent:
+            nav = nav.parent
+        return nav
 
     def __str__(self):
         return self.slug
@@ -45,6 +61,12 @@ class Navigation(models.Model):
                     return navigation.article
                 else:
                     return navigation.get_article()
+
+    def get_top_parent(self):
+        current = self
+        while current.parent:
+            current = current.parent
+        return current
 
     def flatten(self, level=0):
         flat_list = [{'object': self, 'level': level}]

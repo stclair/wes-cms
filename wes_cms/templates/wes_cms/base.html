@@ -12,9 +12,12 @@
         <div class="nav_headers">{% include "wes_cms/navigation_header.html" %}</div>
     </div>
 
-    <div class="content">
+    <div class="breadcrumbs">{% include "wes_cms/breadcrumbs.html" %}</div>
+
     {% include "wes_cms/navigation.html" %}
-    {% block content %}{% endblock %}
+
+    <div class="article">
+        {% block content %}{% endblock %}
     </div>
 
     <div class="footer">
