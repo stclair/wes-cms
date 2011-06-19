@@ -1,9 +1,9 @@
 <div class="navigation">
     <h3>{{ object.get_navigation_header }}</h3>
     <ul>
-    {% for nav in object.get_navigation_header.navigation_set.all %}
+    {% for nav in object.get_other_navigation %}
         <li><a href="{{ nav.article.get_url }}">{{ nav }}</a></li>
-        {% if nav.navigation_set %}
+        {% if nav.navigation_set.all %}
             <ul class="sub-navigation">
             {% for subnav in nav.navigation_set.all %}
                 <li><a href="{{ subnav.article.get_url }}">{{ subnav }}</a></li>

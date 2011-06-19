@@ -25,6 +25,9 @@ class Article(models.Model):
             nav = nav.parent
         return nav
 
+    def get_other_navigation(self):
+        return self.get_navigation_header().navigation_set.all().order_by('order')
+
     def __str__(self):
         return self.slug
 
@@ -40,7 +43,7 @@ class Image(BaseImageModel):
 
 class NavigationManager(models.Manager):
     def get_first(self):
-        top_level_navs = self.filter(parent=None)
+        top_level_navs = self.filter(parent=None).order_by('order')
         if top_level_navs:
             return top_level_navs[0]
 
@@ -82,4 +85,4 @@ class Navigation(models.Model):
         return self.text
 
     def Meta(self):
-        ordering = ['parent__order', 'order']
+        ordering = ['order',]

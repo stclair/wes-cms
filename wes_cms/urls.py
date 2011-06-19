@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 
 from models import Article, Navigation
 
-nav_headers = Navigation.objects.filter(parent=None)
+nav_headers = Navigation.objects.filter(parent=None).order_by('order')
 
 urlpatterns = patterns('',
     url(r'sitemap', 'wes_cms.views.sitemap', name='sitemap'),
